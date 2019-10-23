@@ -105,7 +105,7 @@ case "$2" in
 		USERNAME=$(echo ${REPO_CREDENTIALS} | cut -d':' -f1)
 		PASSWORD=$(echo ${REPO_CREDENTIALS} | cut -d':' -f2)
 		AUTH="$USERNAME:$PASSWORD"
-		echo "Found early saved autorization authorization. Will use user [${USERNAME}] with password [${PASSWORD}] for chart ${CHART}"
+		#echo "Found early saved autorization authorization. Will use user [${USERNAME}] with password [${PASSWORD}] for chart ${CHART}"
 	fi
 
         if [[ -z "$USERNAME" ]] || [[ -z "$PASSWORD" ]]; then
