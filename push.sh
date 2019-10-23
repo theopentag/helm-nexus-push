@@ -100,6 +100,13 @@ case "$2" in
         CMD=push
         CHART=$2
 
+	if [[ -f "$REPO_AUTH_FILE" ]]; then
+		REPO_CREDENTIALS=$(cat $REPO_AUTH_FILE)
+		USERNAME=$(echo ${REPO_CREDENTIALS} | cut -d':' -f1)
+		PASSWORD=$(echo ${REPO_CREDENTIALS} | cut -d':' -f2)
+		echo "Found early saved autorization authorization. Will use user [${USERNAME}] with password [${PASSWORD}] for repository ${CHART}"
+	fi
+
         if [[ -z "$USERNAME" ]] || [[ -z "$PASSWORD" ]]; then
             if [[ -f "$REPO_AUTH_FILE" ]]; then
                 echo "Using cached login creds..."
